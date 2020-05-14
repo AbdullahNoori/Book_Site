@@ -17,6 +17,9 @@ class Tag(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=100)
     num_pages = models.IntegerField(default=0)
-    date_published = models.DateField()
+    date_published = models.DateField(blank=True, null=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True)
     tag = models.ManyToManyField(Tag)
+    
+    def __str__(self):
+            return self.title
